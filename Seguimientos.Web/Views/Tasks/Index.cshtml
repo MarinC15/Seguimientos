@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TaskL>
+
+@{
+    ViewData["Title"] = "Lista de Tareas";
+}
+
+<h2>Lista de Tareas</h2>
+
+<a asp-action="create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nueva Tarea</a>
+
+<table class="table table-bordered mt-2">
+    <thead>
+        <tr>
+            <th>Descripción</th>
+            <th>Completada</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TaskL tarea in Model)
+        {
+            <tr>
+                <td>@tarea.Description</td>
+                <td>@(tarea.IsCompleted ? "Ok" : "No Ok")</td>
+                <td class="action-buttons">
+                    <a class="btn btn-warning" asp-action="ToggleComplete" asp-route-id="@tarea.Id"><i class="bi bi-pencil-fill"></i> Marcar @(!tarea.IsCompleted ? "Ok" : "No Ok")</a>
+                    <form asp-action="Delete" asp-route-id="@tarea.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar esta tarea?');">
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('.btnDelete').click(function (event) {
+
+                event.preventDefault();
+
+                Swal.fire({
+
+                    title: "¿Desea eliminar la sección?",
+                    text: "No podrá revertirlo",
+                    icon: "question",
+                    showCancelButton: true,
+
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
+
+                        const form = $(this).closest('form');
+
+                        form.submit();
+                    }
+                });
+
+            });
+        });
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100, -1],
+                    [5, 10, 30, 50, 100, "Todos"]
+                ]
+            });
+        });
+    </script>
+}
