@@ -11,8 +11,8 @@ using Segumientos.Web.Data;
 namespace Seguimientos.Web.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20241103195231_Inicial")]
-    partial class Inicial
+    [Migration("20241104040523_NuevoInicio")]
+    partial class NuevoInicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,31 @@ namespace Seguimientos.Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Seguimientos.Web.Data.Entities.TipCalculator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("BillAmount")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.Property<decimal>("TipAmount")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.Property<decimal>("TipPercentage")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipCalculators");
+                });
 
             modelBuilder.Entity("Segumientos.Web.Data.Entities.TaskL", b =>
                 {

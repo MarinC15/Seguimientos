@@ -1,0 +1,25 @@
+﻿
+@model TipCalculator
+
+@{
+    ViewData["Title"] = "Tip Calculator";
+}
+
+<h2>Calculadora de Propinas</h2>
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label for="BillAmount">Monto de la factura</label>
+        <input type="number" class="form-control" asp-for="BillAmount" step="0.01" min="0"  />
+        <span asp-validation-for="BillAmount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="TipPercentage">Porcentaje de propina</label>
+        <input type="number" class="form-control" asp-for="TipPercentage" step="0.5" min="0"  />
+        <span asp-validation-for="TipPercentage" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Calcular</button>
+</form>
+
+<a asp-action="List" class="btn btn-secondary mt-3">Ver Calculos Almacenados</a>
+

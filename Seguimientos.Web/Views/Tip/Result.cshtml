@@ -1,0 +1,15 @@
+﻿@model TipCalculator
+
+@{
+    ViewData["Title"] = "Tip Calculator Result";
+}
+
+<h2>Resultado del calculo de propinas</h2>
+
+<p><strong>Monto de la factura:</strong> @Model.BillAmount</p>
+<p><strong>Porcentaje de propina:</strong> @Model.TipPercentage%</p>
+<p><strong>Cantidad de propina:</strong> @Model.TipAmount</p>
+<p><strong>Monto total:</strong> @Model.TotalAmount</p>
+
+<a asp-action="Index" class="btn btn-primary mt-2">Calcular otra propina</a>
+<a asp-action="Index" class="btn btn-success mt-2">Regresar</a>

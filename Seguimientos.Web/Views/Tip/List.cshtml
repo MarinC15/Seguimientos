@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TipCalculator>
+
+@{
+    ViewData["Title"] = "Stored Tips";
+}
+
+<h2>Valores Guardados</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Monto de la factura</th>
+            <th>Porcentaje de propina</th>
+            <th>Cantidad de propina</th>
+            <th>Monto total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TipCalculator tip in Model)
+        {
+            <tr>
+                <td>@tip.BillAmount</td>
+                <td>@tip.TipPercentage</td>
+                <td>@tip.TipAmount</td>
+                <td>@tip.TotalAmount</td>
+                <td>
+                    <div class="d-flex justify-content-around">
+                        <form asp-action="Delete" asp-route-id="@tip.Id" style="display: contents" onsubmit="return confirm('¿Estás seguro de eliminar este registro?');">
+                            <button type="submit" class="btn btn-danger "><i class="bi bi-trash3-fill"></i>Eliminar</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-success mt-2">Regresar</a>

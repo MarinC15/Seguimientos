@@ -21,6 +21,31 @@ namespace Seguimientos.Web.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Seguimientos.Web.Data.Entities.TipCalculator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("BillAmount")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.Property<decimal>("TipAmount")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.Property<decimal>("TipPercentage")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18, 0)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipCalculators");
+                });
+
             modelBuilder.Entity("Segumientos.Web.Data.Entities.TaskL", b =>
                 {
                     b.Property<int>("Id")
