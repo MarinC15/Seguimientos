@@ -2,12 +2,12 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-        <li class="nav-item">
+       @*  <li class="nav-item">
             <a class="nav-link collapsed" asp-controller="Home" asp-action="Index">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li><!-- End Dashboard Nav --> *@
 
         <li class="nav-item">
             <a class="nav-link collapsed" asp-controller="Tasks" asp-action="Index">
@@ -34,6 +34,12 @@
             <a class="nav-link collapsed" asp-controller="Expense" asp-action="Index">
                 <i class="bi bi-cash-coin"></i>
                 <span>Control de Gastos</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Reservation" asp-action="Index">
+                <i class="ri-hotel-bed-line"></i>
+                <span>Generador de Reservas</span>
             </a>
         </li>
         @* <li class="nav-item">

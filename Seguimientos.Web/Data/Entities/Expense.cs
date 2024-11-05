@@ -7,6 +7,7 @@ namespace Seguimientos.Web.Data.Entities
     {
         [Key]
         public int Id { get; set; }
+
         [Display(Name = "Descripción")]
         [Required(ErrorMessage = "El campo '{0}' es requerido.")]
         public string Description { get; set; } = null!;

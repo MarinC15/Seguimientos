@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Reservation>
+
+@{
+    ViewData["Title"] = "Reservaciones";
+}
+
+<h2>Reservaciones</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nueva Reserva</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre de Usuario</th>
+            <th>Fecha de Reservación</th>
+            <th>Servicio Requerido</th>
+            <th>Confirmación</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Reservation reservation in Model)
+        {
+            <tr>
+                <td>@reservation.UserName</td>
+                <td>@reservation.ReservationDate.ToShortDateString()</td>
+                <td>@reservation.ServiceName</td>
+                <td>@(reservation.IsConfirmed ? "Ok" : "No Ok")</td>
+                <td class="action-buttons">
+                    <a class="btn btn-warning" asp-action="Confirm" asp-route-id="@reservation.Id"><i class="bi bi-check2-all"></i> Confirmar @(!reservation.IsConfirmed ? "Ok" : "No Ok")</a>
+                    <a asp-action="Edit" asp-route-id="@reservation.Id" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i> Editar</a>
+                    <form asp-action="Delete" asp-route-id="@reservation.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar esta reserva?');">
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
