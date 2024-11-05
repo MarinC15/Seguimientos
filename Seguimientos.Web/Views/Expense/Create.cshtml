@@ -1,0 +1,36 @@
+﻿@model Expense
+
+@{
+    ViewData["Title"] = "Crear Gasto";
+}
+
+<h2>Crear Nuevo Gasto</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input type="text" class="form-control" asp-for="Description" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amount" class="control-label"></label>
+        <input type="number" class="form-control" asp-for="Amount" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input type="date" class="form-control" asp-for="Date" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label">Categoria</label>
+        <input type="text" class="form-control" asp-for="Category" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="mt-2">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-action="Index" class="btn btn-success">Regresar</a>
+    </div>
+    
+</form>
+

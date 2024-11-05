@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PasswordGenerator>
+
+@{
+    ViewData["Title"] = "Stored Passwords";
+}
+
+<h2>Stored Passwords</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Length</th>
+            <th>Include Lowercase</th>
+            <th>Include Uppercase</th>
+            <th>Include Numbers</th>
+            <th>Include Symbols</th>
+            <th>Generated Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var password in Model)
+        {
+            <tr>
+                <td>@password.Length</td>
+                <td>@password.IncludeLowercase</td>
+                <td>@password.IncludeUppercase</td>
+                <td>@password.IncludeNumbers</td>
+                <td>@password.IncludeSymbols</td>
+                <td>@password.GeneratedPassword</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-primary mt-3">Generate Another Password</a>

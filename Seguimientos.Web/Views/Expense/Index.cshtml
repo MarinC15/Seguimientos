@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Expense>
+
+@{
+    ViewData["Title"] = "Gastos";
+}
+
+<h2>Gastos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i>Nuevo Gasto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Categoría</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Expense expense in Model)
+        {
+            <tr>
+                <td>@expense.Description</td>
+                <td>@expense.Amount</td>
+                <td>@expense.Date.ToShortDateString()</td>
+                <td>@expense.Category</td>
+                <td class="action-buttons">
+                    <a asp-action="Edit" asp-route-id="@expense.Id" class="btn btn-warning"><i class="bi bi-pencil-fill"></i>Editar</a>
+                    <form asp-action="Delete" asp-route-id="@expense.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar este gasto programado?');">
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Summary" class="btn btn-info">Ver Resumen</a>
+</p>

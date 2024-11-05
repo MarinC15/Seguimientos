@@ -9,6 +9,8 @@ namespace Segumientos.Web.Data
     {
         public DbSet<TaskL> Tasks { get; set; }
         public DbSet<TipCalculator> TipCalculators { get; set; }
+        public DbSet<PasswordGenerator> PasswordGenerators { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
 
         public TaskContext(DbContextOptions<TaskContext> options) : base(options)
         {

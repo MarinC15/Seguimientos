@@ -1,0 +1,30 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Resumen";
+}
+
+<h2>Resumen Mensual</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Categoría</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (dynamic item in Model)
+        {
+            <tr>
+                <td>@item.Year</td>
+                <td>@item.Month</td>
+                <td>@item.Category</td>
+                <td>@item.Total</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-success">Regresar</a>

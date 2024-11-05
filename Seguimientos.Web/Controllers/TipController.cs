@@ -14,14 +14,19 @@ namespace Seguimientos.Web.Controllers
         {
             _context = context; 
         }
-        [HttpGet] public IActionResult Index()
+        [HttpGet] 
+        public IActionResult Index()
         {
             return View(); 
         }
-        [HttpPost] public async Task<IActionResult> Index(TipCalculator model) 
+
+        [HttpPost] 
+        public async Task<IActionResult> Index(TipCalculator model) 
         {
             if (ModelState.IsValid) 
-            { model.CalculateTip(); _context.TipCalculators.Add(model); 
+            { 
+                model.CalculateTip(); 
+                _context.TipCalculators.Add(model); 
                 await _context.SaveChangesAsync(); 
                 
                 return View("Result", model); 
@@ -29,11 +34,14 @@ namespace Seguimientos.Web.Controllers
             
             return View(model); 
         }
+
+        [HttpGet]
         public IActionResult Result()
         {
             return View(); 
         }
 
+        [HttpGet]
         public async Task<IActionResult> List()
         {
             List<TipCalculator> tips = await _context.TipCalculators.ToListAsync();
@@ -50,7 +58,7 @@ namespace Seguimientos.Web.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(List));
         }
 
 

@@ -1,0 +1,11 @@
+﻿@model PasswordGenerator
+
+@{
+    ViewData["Title"] = "Generated Password";
+}
+
+<h2>Generated Password</h2>
+
+<p><strong>Your Secure Password:</strong> @Model.GeneratedPassword</p>
+
+<a asp-action="Index" class="btn btn-primary mt-3">Generate Another Password</a>
