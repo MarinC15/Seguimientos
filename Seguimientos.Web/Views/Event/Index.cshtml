@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Event>
+
+@{
+    ViewData["Title"] = "Eventos";
+}
+
+<h2>Eventos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Agregar Nuevo Evento</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Hora de inicio</th>
+            <th>Hora Finalización</th>
+            <th>Descripción</th>
+            <th>Recordatorio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Event item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.StartTime</td>
+                <td>@item.EndTime</td>
+                <td>@item.Description</td>
+                <td>@(item.IsReminderSet ?  "Ok" : "No Ok")</td>                
+                <td class="action-buttons">
+                    <a class="btn btn-warning" asp-action="Confirm" asp-route-id="@item.Id"><i class="bi bi-check2-all"></i> Confirmar @(!item.IsReminderSet ? "Ok" : "No Ok")</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i> Editar</a>
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar este evento?');">
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    
+    </tbody>
+</table>

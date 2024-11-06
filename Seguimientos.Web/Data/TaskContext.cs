@@ -13,6 +13,7 @@ namespace Segumientos.Web.Data
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Event> Events { get; set; }
 
         public TaskContext(DbContextOptions<TaskContext> options) : base(options)
         {
