@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Segumientos.Web.Data;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TaskContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("LocalConnection")));
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

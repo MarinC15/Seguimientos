@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Note>
+
+@{
+    ViewData["Title"] = "Notas";
+}
+
+<h2>Notas</h2>
+
+<form asp-action="Search" method="get" class="form-inline">
+    <input type="text" id="query" name="query" class="form-control" placeholder="Buscar Notas..." />
+    <button type="submit" class="btn btn-primary mt-2"><i class="bi bi-search"></i> Buscar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-info mt-3">
+        @ViewBag.Message
+    </div>
+}
+
+<p class="mt-5">
+    <a asp-action="Create" class="btn btn-primary">Agregar Nueva Nota</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Categoría</th>
+            <th>Creado el</th>
+            <th>Contenido</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Note note in Model)
+        {
+            <tr>
+                <td>@note.Title</td>
+                <td>@note.Category</td>
+                <td>@note.CreatedAt.ToShortDateString()</td>
+                <td>@note.Content</td>
+                <td >
+                    <a asp-action="Edit" asp-route-id="@note.Id" class="btn btn-warning " title="Editar"><i class="bi bi-pencil-fill"></i></a>
+                    <form asp-action="Delete" asp-route-id="@note.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar esta nota?');">
+                        <button type="submit" class="btn btn-danger " title="Eliminar"><i class="bi bi-trash-fill"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

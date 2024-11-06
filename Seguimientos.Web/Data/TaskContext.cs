@@ -12,6 +12,7 @@ namespace Segumientos.Web.Data
         public DbSet<PasswordGenerator> PasswordGenerators { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Note> Notes { get; set; }
 
         public TaskContext(DbContextOptions<TaskContext> options) : base(options)
         {

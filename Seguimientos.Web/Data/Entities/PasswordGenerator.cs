@@ -9,7 +9,7 @@ public class PasswordGenerator
     public bool IncludeUppercase { get; set; } = true;
     public bool IncludeNumbers { get; set; } = true;
     public bool IncludeSymbols { get; set; } = true;
-    public string GeneratedPassword { get; set; }
+    public string GeneratedPassword { get; set; } = null!;
 
     public void GeneratePassword()
     {
