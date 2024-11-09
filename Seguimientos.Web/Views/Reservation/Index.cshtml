@@ -28,11 +28,11 @@
                 <td>@reservation.ReservationDate.ToShortDateString()</td>
                 <td>@reservation.ServiceName</td>
                 <td>@(reservation.IsConfirmed ? "Ok" : "No Ok")</td>
-                <td class="action-buttons">
-                    <a class="btn btn-warning" asp-action="Confirm" asp-route-id="@reservation.Id"><i class="bi bi-check2-all"></i> Confirmar @(!reservation.IsConfirmed ? "Ok" : "No Ok")</a>
-                    <a asp-action="Edit" asp-route-id="@reservation.Id" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i> Editar</a>
+                <td class="action-buttons d-flex align-items-center">
+                    <a class="btn btn-warning" asp-action="Confirm" asp-route-id="@reservation.Id" title="Confirmar"><i class="bi bi-check2-all"></i>  @(!reservation.IsConfirmed ? "Ok" : "No Ok")</a>
+                    <a asp-action="Edit" asp-route-id="@reservation.Id" class="btn btn-secondary" title="Editar"><i class="bi bi-pencil-fill"></i> </a>
                     <form asp-action="Delete" asp-route-id="@reservation.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar esta reserva?');">
-                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill" title="Eliminar"></i> </button>
                     </form>
                 </td>
             </tr>

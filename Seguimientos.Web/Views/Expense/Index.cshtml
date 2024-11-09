@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "Gastos";
 }
-
+<div></div>
 <h2>Gastos</h2>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i>Nuevo Gasto</a>
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nuevo Gasto</a>
 </p>
 
-<table class="table">
+<table class="table ">
     <thead>
         <tr>
             <th>Descripción</th>
@@ -29,9 +29,9 @@
                 <td>@expense.Date.ToShortDateString()</td>
                 <td>@expense.Category</td>
                 <td class="action-buttons">
-                    <a asp-action="Edit" asp-route-id="@expense.Id" class="btn btn-warning"><i class="bi bi-pencil-fill"></i>Editar</a>
+                    <a asp-action="Edit" asp-route-id="@expense.Id" class="btn btn-warning" title="Editar"><i class="bi bi-pencil-fill"></i></a>
                     <form asp-action="Delete" asp-route-id="@expense.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar este gasto programado?');">
-                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                        <button type="submit" class="btn btn-danger" title="Eliminar"><i class="bi bi-trash-fill"></i> </button>
                     </form>
                 </td>
             </tr>

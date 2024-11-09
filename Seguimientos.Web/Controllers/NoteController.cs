@@ -14,6 +14,7 @@ namespace Seguimientos.Web.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             List<Note> notes = await _context.Notes.ToListAsync();
@@ -21,6 +22,7 @@ namespace Seguimientos.Web.Controllers
             return View(notes);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -38,6 +40,8 @@ namespace Seguimientos.Web.Controllers
 
             return View(note);
         }
+
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             Note? note = await _context.Notes.FindAsync(id);
@@ -61,6 +65,8 @@ namespace Seguimientos.Web.Controllers
 
             return View(note);
         }
+
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             Note? note = await _context.Notes.FindAsync(id);
@@ -73,11 +79,12 @@ namespace Seguimientos.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
         public async Task<IActionResult> Search(string query)
         {
             if (string.IsNullOrWhiteSpace(query))
             {
-                ViewBag.Message = "Por favor ingrese un término de búsqueda.";
+                ViewBag.Message = "Por favor ingrese un término válido de búsqueda.";
 
                 return View("Index", await _context.Notes.ToListAsync());
             }

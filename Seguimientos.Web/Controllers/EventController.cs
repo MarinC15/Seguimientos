@@ -16,12 +16,14 @@ namespace Seguimientos.Web.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             List<Event> even = await _context.Events.ToListAsync();
             return View(even);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -39,6 +41,7 @@ namespace Seguimientos.Web.Controllers
             return View(even);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             Event? even = await _context.Events.FindAsync(id);
@@ -61,6 +64,7 @@ namespace Seguimientos.Web.Controllers
             return View(even);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             Event? even = await _context.Events.FindAsync(id);

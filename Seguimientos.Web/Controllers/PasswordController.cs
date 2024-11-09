@@ -36,7 +36,7 @@ public class PasswordController : Controller
 
     public async Task<IActionResult> List()
     {
-        var passwords = await _context.PasswordGenerators.ToListAsync();
+        List<PasswordGenerator> passwords = await _context.PasswordGenerators.ToListAsync();
         return View(passwords);
     }
 

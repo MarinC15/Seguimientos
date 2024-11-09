@@ -29,12 +29,12 @@
                 <td>@item.StartTime</td>
                 <td>@item.EndTime</td>
                 <td>@item.Description</td>
-                <td>@(item.IsReminderSet ?  "Ok" : "No Ok")</td>                
-                <td class="action-buttons">
-                    <a class="btn btn-warning" asp-action="Confirm" asp-route-id="@item.Id"><i class="bi bi-check2-all"></i> Confirmar @(!item.IsReminderSet ? "Ok" : "No Ok")</a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary"><i class="bi bi-pencil-fill"></i> Editar</a>
+                <td>@(item.IsReminderSet ?  "Ok" : "No Ok")</td>
+                <td class="action-buttons d-flex align-items-center">
+                    <a class="btn btn-warning" asp-action="Confirm" asp-route-id="@item.Id" title="Confirmar"><i class="bi bi-check2-all"></i>  @(!item.IsReminderSet ? "Ok" : "No Ok")</a>
+                    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id" title="Editar"><i class="bi bi-pencil-fill"></i> </a>
                     <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('¿Estás seguro de eliminar este evento?');">
-                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill" title="Eliminar"></i> </button>
                     </form>
                 </td>
             </tr>

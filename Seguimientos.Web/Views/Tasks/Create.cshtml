@@ -17,12 +17,10 @@
         <label class="form-label">Completada</label>
         <input type="checkbox" asp-for="IsCompleted" />
     </div>
-    <button type="submit" class="btn btn-primary mt-3">Crear</button>
+    <div>
+        <button type="submit" class="btn btn-primary mt-3">Crear</button>
+        <a asp-action="Index" class="btn btn-success mt-3">Regresar</a>
+    </div>
+    
 </form>
 
-@section Scripts
-{
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

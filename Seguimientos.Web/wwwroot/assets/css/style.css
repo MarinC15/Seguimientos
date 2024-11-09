@@ -1242,3 +1242,16 @@ h6 {
         width: 100%;
         max-width: 150px;
     }
+.home-background {
+    background-image: url('/images/what-are-index-funds.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    height: 100vh; 
+    width: 100%; 
+    color: white; 
+    
+   
+ 
+    
+}

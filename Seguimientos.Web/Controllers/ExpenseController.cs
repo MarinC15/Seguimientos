@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Seguimientos.Web.Data.Entities;
 using Segumientos.Web.Data;
-using System;
 
 namespace Seguimientos.Web.Controllers
 {
